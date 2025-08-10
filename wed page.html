@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Online Examination Portal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin:70;
+            background-color: #f3f8ff;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #be13ad, #ae128c);
+            color: 0;
+            padding: 25px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #adc719;
+            padding: 12px 0;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #004d99;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        nav a:hover {
+            color: #ff6600;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h3 {
+            color: #004d99;
+        }
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #004d99;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #003366;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        ul {
+            line-height: 1.6;
+        }
+    </style>
+    <script>
+        function showPage(page) {
+            let pages = ["homePage", "loginPage", "registerPage", "testPage", "resultPage"];
+            pages.forEach(p => document.getElementById(p).style.display = "none");
+            document.getElementById(page).style.display = "block";
+        }
+
+        function submitTest() {
+            let score = 0;
+            let answers = {
+                q1: "b",
+                q2: "a",
+                q3: "c",
+                q4: "b",
+                q5: "a",
+                q6: "b",
+                q7: "c",
+                q8: "a",
+                q9: "b",
+                q10: "d"
+            };
+            for (let q in answers) {
+                let selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === answers[q]) {
+                    score++;
+                }
+            }
+            document.getElementById("score").innerText = `You scored ${score} out of 10`;
+            showPage('resultPage');
+        }
+    </script>
+</head>
+<body>
+<header>
+    <h1>Welcome to the Online Examination Portal</h1>
+    <h2>Aditya  Institute of Technology & Management</h2>
+</header>
+
+<nav>
+    <a onclick="showPage('homePage')">🏠 Home</a>
+    <a onclick="showPage('loginPage')">🏫 Student Login</a>
+    <a onclick="showPage('registerPage')">📝 Register</a>
+    <a onclick="showPage('testPage')">📚 Take Test</a>
+    <a onclick="showPage('resultPage')">📊 View Results</a>
+</nav>
+<div id="homePage" class="container">
+    <h3>Institute Vision</h3>
+    <p>To evolve into a premier engineering institute by creating globally competitive, ethical, and socially responsible professionals.</p>
+    <h3>Institute Mission</h3>
+    <p>Synergizing knowledge, technology, and human resources for sustainable development.</p>
+    <h3>Instructions for the Examination</h3>
+    <ul>
+        <li>Login with your registered username and password before starting the test.</li>
+        <li>Read each question carefully and choose the most appropriate answer.</li>
+        <li>You have <strong>30 minutes</strong> to complete the test.</li>
+        <li>Once you submit, your answers cannot be changed.</li>
+        <li>Your score will be displayed immediately after submission.</li>
+        <li>Ensure a stable internet connection during the test.</li>
+    </ul>
+</div>
+<div id="loginPage" class="container" style="display:none;">
+    <h2>Student Login</h2>
+    <input type="text" placeholder="Enter Username">
+    <input type="password" placeholder="Enter Password">
+    <button onclick="showPage('homePage')">Login</button>
+</div>
+<div id="registerPage" class="container" style="display:none;">
+    <h2>Register</h2>
+    <input type="text" placeholder="Full Name">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button onclick="showPage('loginPage')">Register</button>
+</div>
+<div id="testPage" class="container" style="display:none;">
+    <h2>Java Online Test</h2>
+    
+    <div class="question">
+        <p>1. Which keyword is used to inherit a class in Java?</p>
+        <label><input type="radio" name="q1" value="a"> implement</label><br>
+        <label><input type="radio" name="q1" value="b"> extends</label><br>
+        <label><input type="radio" name="q1" value="c"> inherits</label><br>
+    </div>
+    <div class="question">
+        <p>2. Which method is the entry point for a Java program?</p>
+        <label><input type="radio" name="q2" value="a"> main()</label><br>
+        <label><input type="radio" name="q2" value="b"> start()</label><br>
+        <label><input type="radio" name="q2" value="c"> init()</label><br>
+    </div>
+    <div class="question">
+        <p>3. Which of these is not a Java primitive type?</p>
+        <label><input type="radio" name="q3" value="a"> int</label><br>
+        <label><input type="radio" name="q3" value="b"> float</label><br>
+        <label><input type="radio" name="q3" value="c"> string</label><br>
+    </div>
+    <div class="question">
+        <p>4. Which symbol is used for single-line comments in Java?</p>
+        <label><input type="radio" name="q4" value="a"> #</label><br>
+        <label><input type="radio" name="q4" value="b"> //</label><br>
+        <label><input type="radio" name="q4" value="c"> /* */</label><br>
+    </div>
+    <div class="question">
+        <p>5. Which of the following is a wrapper class in Java?</p>
+        <label><input type="radio" name="q5" value="a"> Integer</label><br>
+        <label><input type="radio" name="q5" value="b"> int</label><br>
+        <label><input type="radio" name="q5" value="c"> double</label><br>
+    </div>
+    <div class="question">
+        <p>6. Which keyword is used to define a constant in Java?</p>
+        <label><input type="radio" name="q6" value="a"> finalvar</label><br>
+        <label><input type="radio" name="q6" value="b"> final</label><br>
+        <label><input type="radio" name="q6" value="c"> constant</label><br>
+    </div>
+    <div class="question">
+        <p>7. What is the default value of a boolean variable in Java?</p>
+        <label><input type="radio" name="q7" value="a"> true</label><br>
+        <label><input type="radio" name="q7" value="b"> 1</label><br>
+        <label><input type="radio" name="q7" value="c"> false</label><br>
+    </div>
+    <div class="question">
+        <p>8. Which package contains the Scanner class?</p>
+        <label><input type="radio" name="q8" value="a"> java.util</label><br>
+        <label><input type="radio" name="q8" value="b"> java.io</label><br>
+        <label><input type="radio" name="q8" value="c"> java.net</label><br>
+    </div>
+    <div class="question">
+        <p>9. Which operator is used for multiplication in Java?</p>
+        <label><input type="radio" name="q9" value="a"> x</label><br>
+        <label><input type="radio" name="q9" value="b"> *</label><br>
+        <label><input type="radio" name="q9" value="c"> multiply</label><br>
+    </div>
+    <div class="question">
+        <p>10. Which of these is used to handle exceptions in Java?</p>
+        <label><input type="radio" name="q10" value="a"> try-do</label><br>
+        <label><input type="radio" name="q10" value="b"> handle-catch</label><br>
+        <label><input type="radio" name="q10" value="c"> do-catch</label><br>
+        <label><input type="radio" name="q10" value="d"> try-catch</label><br>
+    </div>
+    <button onclick="submitTest()">Submit Test</button>
+</div>
+<div id="resultPage" class="container" style="display:none;">
+    <h2>Test Results</h2>
+    <p id="score">Your score will be shown here.</p>
+</div>
+</body>
+</html>
